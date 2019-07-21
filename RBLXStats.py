@@ -1,11 +1,12 @@
-import requests
+import requests, os, time
 from bs4 import BeautifulSoup
 
 print("Welcome to RBLX Stats! Made by Lee Everett / Null#8566")
 print("Please know: ")
 print("I am still working on updates for this script")
 
-game = input("Game URL: ")
+game = input("URL: ")
+
 r  = requests.get(game)
 data = r.text
 soup = BeautifulSoup(data, features="lxml")
@@ -23,7 +24,7 @@ favourite_count = favourites.find('p', attrs={'class' : 'text-lead font-caption-
 # FIND VISITS
 
 visits = stats[2]
-visit_count = visits.find('p', attrs={"id" : "game-visit-count"}).text
+visit_count = visits.find('p', attrs={"id" : "game-visit-count"})['title']
 
 # FIND CREATED
 
@@ -42,12 +43,3 @@ print("Favourites: " + favourite_count)
 print("Visits: " + visit_count)
 print("Created Date: " + created_date)
 print("Last Updated: " + updated_date)
-
-
-
-
-
-
-
-
-
