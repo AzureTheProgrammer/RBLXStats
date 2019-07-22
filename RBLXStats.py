@@ -55,10 +55,7 @@ print("[*] Grabbed the last updated date of the game.")
 
 print("")
 print("Grabbed these stats!")
-try:
-    print("Name: " + game_title)
-except:
-    print("Name: cant be grabbed!")
+print("Name: " + game_title.encode('ascii', 'ignore').decode('ascii'))
 time.sleep(0.5)
 print("Creator: " + creator_name + " (" + creator_link + ")")
 time.sleep(0.5)
